@@ -1,6 +1,9 @@
 PROBLEM SOLVED
+
 This application will give general and contact information about Elite Vixen Paranormal ghost hunting so that users can reach out to them to solicit their services . It also lets users connect and communicate about potential paranormal sightings and interests related to paranormal activity. 
+
 OVERVIEW 
+
 The purpose of this application is to create an online space where people can connect through their paranormal experiences, submit an investigation request form to acquire ghost hunting services, and find general and contact information for  Elite Vixen Paranormal. Users will be able to register and log in to their account, create new posts, delete their own posts,  favorite posts, and submit investigation request forms. Employees will be able  to view and delete the investigation request forms. 
 
 
