@@ -1,0 +1,74 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    border-bottom: 1px solid whitesmoke;
+    padding: 0.5em 0 0.5em 1em;
+    margin-bottom: 2em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    margin: auto;
+}
+.navigation__about {
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+
+.navigation__contact {
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+.navigation__requestForm {
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+
+.navbar_item {
+    vertical-align: baseline;
+}
+
+.navigation__name {
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.navigation__icon > img {
+    height: 2rem;
+}
+
+
+.navigation__message {
+    margin-left: auto;
+    margin-right: 4em;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.navigation__message > img {
+    height: 2rem;
+}
+
+
+
+.navigation__messageItem {
+    flex: 1;
+}
+
+.navigation__logout {
+    padding-left: 55%;
+    padding-top: .5rem;
+    flex-shrink: nowrap;
+}
+
+
+
+.navbar__link {
+    border: none;
+}
