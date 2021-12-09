@@ -1,93 +1,97 @@
-import React, { useState } from "react"
-import { useHistory } from "react-router-dom";
-import useSimpleAuth from "../hooks/useSimpleAuth";
-
+import React, { useRef, useState } from "react"
+import { useHistory } from "react-router-dom"
 import "./Login.css"
 
-export const Register = () => {
-    const [credentials, syncAuth] = useState({
-        name: "",
-        email: "",
-        address: "",
-        employee: false
-    })
-    const { register } = useSimpleAuth()
+export const Register = (props) => {
+    const [user, setUser] = useState({})
+    const conflictDialog = useRef()
+
     const history = useHistory()
 
+    const existingUserCheck = () => {
+        return fetch(`http://localhost:8088/users?email=${user.email}`)
+            .then(res => res.json())
+            .then(user => !!user.length)
+    }
     const handleRegister = (e) => {
         e.preventDefault()
-
-        const newUser = {
-            name: `${credentials.name}`,
-            email: credentials.email,
-            employee: credentials.employee
-        }
-
-        register(newUser).then(() => {
-            history.push("/")
-        })
+        existingUserCheck()
+            .then((userExists) => {
+                if (!userExists) {
+                    fetch("http://localhost:8088/users", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(user)
+                    })
+                        .then(res => res.json())
+                        .then(createdUser => {
+                            if (createdUser.hasOwnProperty("id")) {
+                                localStorage.setItem("evp_user", createdUser.id)
+                                history.push("/")
+                            }
+                        })
+                }
+                else {
+                    conflictDialog.current.showModal()
+                }
+            })
     }
 
-    const handleUserInput = (event) => {
-        const copy = {...credentials}
-        copy[event.target.id] = event.target.value
-        syncAuth(copy)
+    const updateUser = (evt) => {
+        const copy = {...user}
+        copy[evt.target.id] = evt.target.value
+        setUser(copy)
     }
 
 
     return (
         <main style={{ textAlign: "center" }}>
+            <dialog className="dialog dialog--password" ref={conflictDialog}>
+                <div>Account with that email address already exists</div>
+                <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
+            </dialog>
+
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for Elite Vixen Paranormal</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> Name: </label>
-                    <input type="text" onChange={handleUserInput}
-                        id="name"
-                        className="form-control"
-                        placeholder="name"
-                        required autoFocus />
+                    <label htmlFor="name"> Full Name </label>
+                    <input onChange={updateUser}
+                           type="text" id="name" className="form-control"
+                           placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input type="email" onChange={handleUserInput}
-                        id="email"
-                        className="form-control"
-                        placeholder="Email address"
-                        required />
+                    <label htmlFor="address"> Address </label>
+                    <input onChange={updateUser} type="text" id="address" className="form-control" placeholder="Street address" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="address"> Address: </label>
-                    <input type="text" onChange={handleUserInput}
-                        id="address"
-                        className="form-control"
-                        placeholder="name"
-                        required autoFocus />
+                    <label htmlFor="email"> Email address </label>
+                    <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <input
-                        onChange={
-                            (event) => {
-                                const copy = { ...credentials }
-                                if (event.target.value === "on") {
-                                    copy.employee = true
+                        <input
+                            onClick={
+                                (event) => {
+                                    const copy = {...user}
+                                    if (event.target.value === "on") {
+                                        copy.employee = true
+                                    }
+                                    else {
+                                        copy.employee = false
+                                    }
+                                    setUser(copy)
                                 }
-                                else {
-                                    copy.employee = false
-                                }
-                                syncAuth(copy)
                             }
-                        }
-                        defaultChecked={credentials.employee}
-                        type="checkbox" name="employee" id="employee" />
-                    <label htmlFor="employee"> Employee account? </label>
-                </fieldset>
-
+                            
+                            type="checkbox" name="checkbox" id="checkbox" />
+                        <label htmlFor="checkbox"> Are you an employee of EVP? </label>
+                    </fieldset>
                 <fieldset>
-                    <button type="submit">
-                        Sign in
-                    </button>
+                    <button type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>
     )
 }
+

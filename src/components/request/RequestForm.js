@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 
 
 export const RequestForm = () => {
 
     const [request, createRequest] = useState({
         userId: "",
+        name: "",
         number: 0,
         address: "",
         requestedDate: "",
@@ -22,6 +23,7 @@ export const RequestForm = () => {
 
         const newRequest = {
             userId: parseInt(localStorage.getItem("evp_user")),
+            name: request.name,
             number: request.number,
             address: request.address,
             requestedDate: request.requestedDate,
@@ -153,6 +155,9 @@ export const RequestForm = () => {
             <button onClick={saveRequest} className="btn btn-primary" >
                 Submit Request 
             </button>
+            <Link to="/submittedRequests" className="link--requests" >
+                View Requests 
+            </Link>
         </form>
     )
 }

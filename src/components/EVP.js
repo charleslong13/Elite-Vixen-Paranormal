@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import { Register } from "./auth/Register";
-import Login from "./auth/Login";
+import {Login} from "./auth/Login";
 
 
 export const EVP = () => (
