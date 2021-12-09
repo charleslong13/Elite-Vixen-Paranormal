@@ -40,7 +40,7 @@ export const RequestForm = () => {
             body: JSON.stringify(newRequest)
         }
 
-        return fetch("http://localhost:8088/requests", fetchOption)
+        return fetch("http://localhost:8088/requests?_expand=user", fetchOption)
             .then(() => {
                     history.push("/requests")
             })
@@ -155,9 +155,13 @@ export const RequestForm = () => {
             <button onClick={saveRequest} className="btn btn-primary" >
                 Submit Request 
             </button>
+            {
+                request.userId.employee === true
+                ? <>
             <Link to="/submittedRequests" className="link--requests" >
                 View Requests 
             </Link>
+           </> : "" }
         </form>
     )
 }
