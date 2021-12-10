@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
     display: flex;
     flex-wrap: nowrap;
     justify-content: start;
@@ -10,7 +10,25 @@
     width: 100%;
     background-color: black;
     margin: auto;
+} */
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    
+    
 }
+
+.navbar_item {
+    flex-basis: 20%;
+    list-style-type: none;
+}
+
+
+
 .navigation__about {
     font-size: 1rem;
     padding-left: 1rem;
@@ -28,9 +46,7 @@
     padding-top: 0.5rem;
 }
 
-.navbar_item {
-    vertical-align: baseline;
-}
+
 
 .navigation__name {
     font-size: 1rem;

@@ -1,9 +1,11 @@
-import React, { useState } from "react"
-import { useHistory, Link } from "react-router-dom"
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useHistory} from "react-router-dom"
+
 
 
 export const RequestForm = () => {
-
+    const [users, setUsers] = useState()
     const [request, createRequest] = useState({
         userId: "",
         name: "",
@@ -45,9 +47,31 @@ export const RequestForm = () => {
                     history.push("/requests")
             })
     }
+useEffect(()=> {
+    getCurrentUser()
+}, [])
+
+const currentUser = parseInt(localStorage.getItem("evp_user"))
+    const getCurrentUser = () => { 
+        return fetch(`http://localhost:8088/users?id=${currentUser}`)
+        .then(res => res.json())
+        .then(response => setUsers(response[0]))
+        
+    }
+        
+    
 
     return (
         <form className="requestForm">
+            {/* using optional chaining because it cannot read the employee property initially */}
+            { users?.employee
+             ? <>
+                             <Link to="/submittedRequests" className="link--requests" >
+                                 View Requests
+                             </Link>
+                         </> : ""}
+
+                         
             <h2 className="requestForm__title">New Investigation Request</h2>
 
             <fieldset>
@@ -149,19 +173,12 @@ export const RequestForm = () => {
                                 copy.propertyOwner = evt.target.checked
                                 createRequest(copy)
                             }
-                        } type="checkbox" />
+                        }  />
                 </div>
             </fieldset>
             <button onClick={saveRequest} className="btn btn-primary" >
                 Submit Request 
             </button>
-            {
-                request.userId.employee === true
-                ? <>
-            <Link to="/submittedRequests" className="link--requests" >
-                View Requests 
-            </Link>
-           </> : "" }
         </form>
     )
 }
