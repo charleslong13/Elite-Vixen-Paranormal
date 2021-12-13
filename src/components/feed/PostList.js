@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom"
 
 export const PostList = () => {
     const [posts, updatePosts] = useState([])
-    
+
+
     const history = useHistory()
 
     useEffect(
@@ -27,9 +28,9 @@ const deletePost = (id) => {
             .then(() => {
                 history.push("/posts")
             })})
-    
-
     }
+
+    
 
     return (
         <>
@@ -46,7 +47,10 @@ const deletePost = (id) => {
                     <p>Title: {completedPost.title}</p>
                     <p>Description: {completedPost.description}</p>
                     <p>Posted by: {completedPost.user?.name}</p>
+                    {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) 
+                    ?
                     <button onClick={() => deletePost(completedPost.id)}>Delete</button>
+             : ""}
                 </div>
                 
                 </div>
