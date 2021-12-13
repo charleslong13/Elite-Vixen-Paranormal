@@ -9,7 +9,7 @@ export const PostForm = () => {
         title: "",
         imageUrl: "",
         description: "",
-        timestamp: 12345,
+        timestamp: "",
     })
 
 
@@ -23,7 +23,7 @@ const savePost = (evt) => {
         title: post.title,
         imageUrl: post.imageUrl,
         description: post.description,
-        timestamp: Date.now().toString(),
+        timestamp: post.timestamp,
     }
     const fetchOption = {
         method: "POST",
@@ -90,6 +90,23 @@ return (
                         //creates a copy of request state
                         const copy = { ...post }
                         copy.description = evt.target.value
+                        createPost(copy)
+                    }
+                } required autoFocus
+                type="text"
+                className="form-control"
+                  />
+        </div>
+    </fieldset>
+    <fieldset>
+        <div className="form-group">
+            <label htmlFor="date">Date Posted:</label>
+            <input 
+                onChange={
+                    (evt) => {
+                        //creates a copy of request state
+                        const copy = { ...post }
+                        copy.timestamp = evt.target.value
                         createPost(copy)
                     }
                 } required autoFocus

@@ -44,9 +44,10 @@ const deletePost = (id) => {
                 return <center><div className="postList"><div key={`post--${completedPost.id}`}>
                 <img className="postImage" src={completedPost.imageUrl} /><p>
                 </p><div className="postData">
-                    <p>Title: {completedPost.title}</p>
-                    <p>Description: {completedPost.description}</p>
+                    <p> {completedPost.title}</p>
+                    <p> {completedPost.description}</p>
                     <p>Posted by: {completedPost.user?.name}</p>
+                    <p>{completedPost.timestamp}</p>
                     {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) 
                     ?
                     <button onClick={() => deletePost(completedPost.id)}>Delete</button>

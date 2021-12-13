@@ -42,7 +42,7 @@ export const RequestList = () => {
                         <p>Requested Investigation Address: {request.address}</p>
                         <p>Property Owner: {JSON.stringify(request.propertyOwner)}</p>
                         <p>Contact number: {request.number}</p>
-                        <p>Request submitted on: {request.timestamp}</p>
+                        
                         
                     <button onClick={() => deleteRequest(request.id)}>Delete</button>
             
