@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 
 export const RequestList = () => {
     const [requests, setRequests] = useState([])
 
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -15,7 +17,19 @@ export const RequestList = () => {
         },
         []
     )
-
+    const deleteRequest = (id) => {
+        fetch(`http://localhost:8088/requests/${id}`, { method: 'DELETE' })
+            .then(() => {
+                fetch(`http://localhost:8088/requests`)
+            
+            .then(res => res.json())
+            .then((data) => {
+                setRequests(data)
+            })
+            .then(() => {
+                history.push("/submittedRequests")
+            })})
+    }
 
     return (
         <>
@@ -30,6 +44,8 @@ export const RequestList = () => {
                         <p>Contact number: {request.number}</p>
                         <p>Request submitted on: {request.timestamp}</p>
                         
+                    <button onClick={() => deleteRequest(request.id)}>Delete</button>
+            
                          </p>
                     }
                 )

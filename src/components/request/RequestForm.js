@@ -44,7 +44,7 @@ export const RequestForm = () => {
 
         return fetch("http://localhost:8088/requests?_expand=user", fetchOption)
             .then(() => {
-                    history.push("/requests")
+                    history.push("/posts")
             })
     }
 useEffect(()=> {

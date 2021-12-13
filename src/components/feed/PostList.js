@@ -58,7 +58,7 @@ const deletePost = (id) => {
                 </center>
                 
             }
-        )
+        ).reverse() //using .reverse so that the newest post submission shows up at the top of the list
         }
         </>
     )
