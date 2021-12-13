@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-
 import { useHistory} from "react-router-dom"
 
 export const PostForm = () => {
 
-    const [post, createPost] = useState({
+    const [post, createPost] = useState({ // State variable for current post object
         userId: "",
         title: "",
         imageUrl: "",
@@ -51,7 +50,7 @@ return (
             <input
                 onChange={
                     (evt) => {
-                        //creates a copy of request state
+                        //creates a copy of post state
                         const copy = { ...post }
                         copy.title = evt.target.value
                         createPost(copy)
@@ -70,7 +69,6 @@ return (
             <input 
                 onChange={
                     (evt) => {
-                        //creates a copy of request state
                         const copy = { ...post }
                         copy.imageUrl = evt.target.value
                         createPost(copy)
@@ -87,7 +85,6 @@ return (
             <input 
                 onChange={
                     (evt) => {
-                        //creates a copy of request state
                         const copy = { ...post }
                         copy.description = evt.target.value
                         createPost(copy)
@@ -104,7 +101,6 @@ return (
             <input 
                 onChange={
                     (evt) => {
-                        //creates a copy of request state
                         const copy = { ...post }
                         copy.timestamp = evt.target.value
                         createPost(copy)

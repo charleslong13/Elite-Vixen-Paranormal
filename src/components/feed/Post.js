@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 
 export const Post = () => {
-    const [post, assignPost] = useState({})  // State variable for current ticket object
+    const [post, assignPost] = useState({})  // State variable for current post object
 
     const { postId } = useParams()  // Variable storing the route parameter
     const history = useHistory()
 
 
-    // Fetch the individual ticket when the parameter value changes
+    // Fetch the individual post when the parameter value changes
     useEffect(
         () => {
             return fetch(`http://localhost:8088/posts/${postId}?_expand=user`)
@@ -18,12 +18,12 @@ export const Post = () => {
                 })
 
         },
-        [postId]  // Above function runs when the value of ticketId change
+        [postId]  // Above function runs when the value of postId change
     )
 
 
 
-    // Function to invoke when an employee is chosen from <select> element
+    // Function to invoke when a user has input all of their edits 
     const setNewPost = (evt) => {
 
         // Construct a new object to replace the existing one in the API
@@ -59,7 +59,7 @@ export const Post = () => {
                 <div className="post__title">Edit your title
                     <input  id="title"  onChange={
                             (evt) => {
-                                //creates a copy of request state
+                                //creates a copy of post state
                                 const copy = { ...post }
                                 copy.title = evt.target.value
                                 assignPost(copy)
@@ -71,7 +71,6 @@ export const Post = () => {
                 <div className="post__url">Edit your image/gif url
                     <input  id="edit__url"  onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...post }
                                 copy.imageUrl = evt.target.value
                                 assignPost(copy)
@@ -83,7 +82,6 @@ export const Post = () => {
                 <div className="post__description">Edit your description
                     <input  id="edit__description"  onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...post }
                                 copy.description = evt.target.value
                                 assignPost(copy)
@@ -95,7 +93,6 @@ export const Post = () => {
                 <div className="post__date">Update your new post's submission date 
                     <input  id="edit__date"  onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...post }
                                 copy.timestamp = evt.target.value
                                 assignPost(copy)

@@ -46,14 +46,14 @@ export const PostList = () => {
                         return <center><div className="postList"><div key={`post--${completedPost.id}`}>
                             <img className="postImage" src={completedPost.imageUrl} /><p>
                             </p><div className="postData">
-                                {completedPost.user?.id === parseInt(localStorage.getItem("evp_user"))
+                                {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) //using a ternary so that the title will be displayed as a link only if the post was submitted by the current user, if the post was made by someone else it just displays as a string
                                     ?
                                     <Link to={`/posts/${completedPost.id}`}>{completedPost.title}</Link> :
                                       completedPost.title }
                                 <p> {completedPost.description}</p>
                                 <p>Posted by: {completedPost.user?.name}</p>
                                 <p>{completedPost.timestamp}</p>
-                                {completedPost.user?.id === parseInt(localStorage.getItem("evp_user"))
+                                {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) //using a ternary to only display a delete button on posts made by the current user, if someone else created the post it just renders a blank string
                                     ?
                                     <button onClick={() => deletePost(completedPost.id)}>Delete</button>
                                     : ""}

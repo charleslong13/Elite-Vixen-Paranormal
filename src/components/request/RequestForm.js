@@ -55,7 +55,7 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
     const getCurrentUser = () => { 
         return fetch(`http://localhost:8088/users?id=${currentUser}`)
         .then(res => res.json())
-        .then(response => setUsers(response[0]))
+        .then(response => setUsers(response[0])) //the response we get back is an array with only one object, used the first index of the array to access it so that dot notation can used used below to access the employee property for the ternary statement 
         
     }
         
@@ -99,7 +99,6 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
                     <input 
                         onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...request }
                                 copy.number = evt.target.value
                                 createRequest(copy)
@@ -116,7 +115,6 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
                     <input 
                         onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...request }
                                 copy.address = evt.target.value
                                 createRequest(copy)
@@ -134,7 +132,6 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
                     <input 
                         onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...request }
                                 copy.requestedDate = evt.target.value
                                 createRequest(copy)
@@ -151,7 +148,6 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
                     <input 
                         onChange={
                             (evt) => {
-                                //creates a copy of request state
                                 const copy = { ...request }
                                 copy.description = evt.target.value
                                 createRequest(copy)
@@ -168,7 +164,6 @@ const currentUser = parseInt(localStorage.getItem("evp_user"))
                     <input type="checkbox"
                         onChange={
                             (evt) => {
-                                //creates a copy of ticket state
                                 const copy = { ...request }
                                 copy.propertyOwner = evt.target.checked
                                 createRequest(copy)
