@@ -50,11 +50,13 @@ export const Post = () => {
 
     return (
         <>
-            <h2>Post Details</h2>
+            <center><h2>Post Details</h2></center>
             <section className="post">
-                <h3 className="post__description">{post.description}</h3>
-                <div className="post__user">Submitted by {post.user?.name}</div>
-                <div className="post__employee">Edit your title
+                <center><p><h3 className="post__description">{post.title}</h3>
+                <img className="postImage" src={post.imageUrl} />
+                <div className="post__user">Submitted by {post.user?.name}</div></p>
+                <div className="post__description">{post.description}</div></center>
+                <div className="post__title">Edit your title
                     <input  id="title"  onChange={
                             (evt) => {
                                 //creates a copy of request state
@@ -66,7 +68,46 @@ export const Post = () => {
                         type="text"
                         className="form-control" >
                     </input>
+                <div className="post__url">Edit your image/gif url
+                    <input  id="edit__url"  onChange={
+                            (evt) => {
+                                //creates a copy of request state
+                                const copy = { ...post }
+                                copy.imageUrl = evt.target.value
+                                assignPost(copy)
+                            }
+                         } required autoFocus
+                        type="text"
+                        className="form-control" >
+                    </input>
+                <div className="post__description">Edit your description
+                    <input  id="edit__description"  onChange={
+                            (evt) => {
+                                //creates a copy of request state
+                                const copy = { ...post }
+                                copy.description = evt.target.value
+                                assignPost(copy)
+                            }
+                         } required autoFocus
+                        type="text"
+                        className="form-control" >
+                    </input>
+                <div className="post__date">Update your new post's submission date 
+                    <input  id="edit__date"  onChange={
+                            (evt) => {
+                                //creates a copy of request state
+                                const copy = { ...post }
+                                copy.timestamp = evt.target.value
+                                assignPost(copy)
+                            }
+                         } required autoFocus
+                        type="text"
+                        className="form-control" >
+                    </input>
                     <button className="submitEdit" onClick={setNewPost}>Submit Edit</button>
+                    </div>
+                    </div>
+                    </div>
                 </div>
             </section>
         </>
