@@ -6,7 +6,7 @@ export const NavBar = (props) => {
     return (
         <nav className="navbar">
             <li className="navbar_item navigation__name">
-                <Link className="navbar__link" to="/home">Elite Vixen Paranormal</Link>
+                <Link className="navbar__link" to="/posts">Home</Link>
             </li>
             <li className="navbar_item navigation__about">
                     <Link className="navbar__link" to="/about">About</Link>

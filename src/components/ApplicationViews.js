@@ -2,6 +2,8 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { AboutUs } from "./about/AboutUs"
 import { ContactUs } from "./contact/ContactUs"
+import { PostForm } from "./feed/PostEntry"
+import { PostList } from "./feed/PostList"
 import { RequestForm } from "./request/RequestForm"
 import { RequestList } from "./request/RequestList"
 
@@ -20,6 +22,13 @@ export const ApplicationViews = () => {
             <Route exact path="/about">
                 <AboutUs />
             </Route>
+            <Route exact path="/posts">
+                <PostList />
+            </Route>
+            <Route exact path="/posts/create">
+                <PostForm />
+            </Route>
+           
         </>
     )
 }

@@ -14,7 +14,7 @@ export const EVP = () => (
           return (
             <>
               <NavBar />
-              <br></br><h1>Feed</h1>
+              <br></br><h1>Elite Vixen Paranormal</h1>
               <ApplicationViews />
             </>
           );
