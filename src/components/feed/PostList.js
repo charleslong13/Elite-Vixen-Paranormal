@@ -37,13 +37,13 @@ export const PostList = () => {
     return (
         <>
             <div>
-                <center>   <button onClick={() => history.push("/posts/create")}>Create a new post</button></center> 
+                <center>   <button className="postButton" onClick={() => history.push("/posts/create")}>Create a new post</button></center> 
             </div>
             {
                 posts.map(
                     (completedPost) => {
 
-                        return <center><div className="postList"><div key={`post--${completedPost.id}`}>
+                        return <center key={`post--${completedPost.id}`}><div className="postList">
                             <img className="postImage" src={completedPost.imageUrl} alt="" /><p>
                             </p><div className="postData">
                                 {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) //using a ternary so that the title will be displayed as a link only if the post was submitted by the current user, if the post was made by someone else it just displays as a string
@@ -59,7 +59,7 @@ export const PostList = () => {
                                     : ""}
                             </div>
 
-                        </div>
+                        
                         </div>
                         </center>
 
