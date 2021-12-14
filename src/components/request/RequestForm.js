@@ -5,7 +5,7 @@ import { useHistory} from "react-router-dom"
 
 
 export const RequestForm = () => {
-    const [users, setUsers] = useState()
+    const [user, setUsers] = useState()
     const [request, createRequest] = useState({
         userId: "",
         name: "",
@@ -47,24 +47,24 @@ export const RequestForm = () => {
                     history.push("/posts")
             })
     }
-useEffect(()=> {
-    getCurrentUser()
-}, [])
-
-const currentUser = parseInt(localStorage.getItem("evp_user"))
+    
+    const currentUser = parseInt(localStorage.getItem("evp_user"))
     const getCurrentUser = () => { 
         return fetch(`http://localhost:8088/users?id=${currentUser}`)
         .then(res => res.json())
         .then(response => setUsers(response[0])) //the response we get back is an array with only one object, used the first index of the array to access it so that dot notation can used used below to access the employee property for the ternary statement 
         
     }
-        
+    
+    useEffect(()=> {
+        getCurrentUser()
+    }, [])
     
 
     return (
         <form className="requestForm">
             {/* using optional chaining because it cannot read the employee property initially */}
-            { users?.employee
+            { user?.employee
              ? <>
                              <Link to="/submittedRequests" className="link--requests" >
                                  View Requests

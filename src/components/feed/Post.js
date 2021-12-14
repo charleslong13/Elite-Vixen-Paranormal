@@ -13,8 +13,8 @@ export const Post = () => {
         () => {
             return fetch(`http://localhost:8088/posts/${postId}?_expand=user`)
                 .then(response => response.json())
-                .then((data) => {
-                    assignPost(data)
+                .then((postObj) => {
+                    assignPost(postObj)
                 })
 
         },

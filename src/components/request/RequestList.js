@@ -18,7 +18,7 @@ export const RequestList = () => {
         []
     )
 //below we define a function and set id as the parameter because we will be passing it a post Id, it finds the request object via the id and deletes it from the array 
-//then it refetches the requests array, sets it using setsRequests, and utilizes useHistory to return the user to the submittedRequests page with the current array of request objects
+//then it refetches the requests array, sets the state using setsRequests, and utilizes useHistory to return the user to the submittedRequests page with the current array of request objects
     const deleteRequest = (id) => {
         fetch(`http://localhost:8088/requests/${id}`, { method: 'DELETE' })
             .then(() => {
@@ -36,7 +36,7 @@ export const RequestList = () => {
     return (
         <>
            {
-                requests.map(
+                requests.map(           // map() creates a new array populated with the results of calling a provided function on every element in the requests array
                     (request) => {
                         //setting the key to the request object Id to return the correct, individual request object 
                         return <p key={`request--${request.id}`}> 

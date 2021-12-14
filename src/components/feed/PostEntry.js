@@ -15,7 +15,7 @@ export const PostForm = () => {
 const history = useHistory()
 
 const savePost = (evt) => {
-    evt.preventDefault()
+    evt.preventDefault() //a preventDefault is called on the event when submitting the form to prevent a browser reload/refresh
 
     const newPost = {
         userId: parseInt(localStorage.getItem("evp_user")),
@@ -34,7 +34,7 @@ const savePost = (evt) => {
 
     return fetch("http://localhost:8088/posts?_expand=user", fetchOption)
         .then(() => {
-                history.push("/posts")
+                history.push("/posts") //history.push will navigate the user to the posts route/page
         })
 }
 

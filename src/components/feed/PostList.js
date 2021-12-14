@@ -15,19 +15,19 @@ export const PostList = () => {
                 .then((data) => {
                     updatePosts(data)
                 })
-        }, []
+        }, [] //empty dependency array so this useEffect will only run once initially 
     )
     const deletePost = (id) => {
-        fetch(`http://localhost:8088/posts/${id}`, { method: 'DELETE' })
+        fetch(`http://localhost:8088/posts/${id}`, { method: 'DELETE' }) //gets a specific post object via id and deletes it from the database
             .then(() => {
-                fetch(`http://localhost:8088/posts?_expand=user`)
+                fetch(`http://localhost:8088/posts?_expand=user`) //after its deleted it fetches all of our remaining posts
 
-                    .then(res => res.json())
+                    .then(res => res.json()) //converts the response to json 
                     .then((data) => {
-                        updatePosts(data)
+                        updatePosts(data) //takes the response and calls our setter function to set the remaining posts' state 
                     })
                     .then(() => {
-                        history.push("/posts")
+                        history.push("/posts") //using history.push to navigate the user back to the posts page 
                     })
             })
     }
@@ -37,7 +37,7 @@ export const PostList = () => {
     return (
         <>
             <div>
-                <center>   <button onClick={() => history.push("/posts/create")}>Create a new post</button></center>
+                <center>   <button onClick={() => history.push("/posts/create")}>Create a new post</button></center> 
             </div>
             {
                 posts.map(

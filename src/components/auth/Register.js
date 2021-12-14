@@ -29,7 +29,7 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("evp_user", createdUser.id)
-                                history.push("/")
+                                history.push("/posts")
                             }
                         })
                 }
@@ -40,7 +40,7 @@ export const Register = (props) => {
     }
 
     const updateUser = (evt) => {
-        const copy = {...user}
+        const copy = {...user} //get a copy of current user state 
         copy[evt.target.id] = evt.target.value
         setUser(copy)
     }
@@ -74,7 +74,7 @@ export const Register = (props) => {
                             onClick={
                                 (event) => {
                                     const copy = {...user}
-                                    if (event.target.value === "on") {
+                                    if (event.target.value === "on") { //react will return on instead of true so we want to convert that to a boolean value
                                         copy.employee = true
                                     }
                                     else {
