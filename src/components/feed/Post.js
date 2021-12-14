@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import "./post.css"
 export const Post = () => {
-    const [post, assignPost] = useState({})  // State variable for current post object
+    const [post, assignPost] = useState({})  // declaring state variable, initial value of useState is an empty object, post is the state variable, assignPost is a function that sets post
 
     const { postId } = useParams()  // Variable storing the route parameter
     const history = useHistory()
