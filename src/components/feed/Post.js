@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
-
+import "./post.css"
 export const Post = () => {
     const [post, assignPost] = useState({})  // State variable for current post object
 
@@ -52,12 +52,12 @@ export const Post = () => {
         <>
             <center><h2>Post Details</h2></center>
             <section className="post">
-                <center><p><h3 className="post__description">{post.title}</h3>
-                <img className="postImage" src={post.imageUrl} />
-                <div className="post__user">Submitted by {post.user?.name}</div></p>
-                <div className="post__description">{post.description}</div></center>
+                <center><div><h3 className="post__description">{post.title}</h3>
+                <img className="postImage" src={post.imageUrl} alt=""/>
+                <div className="post__user">Submitted by {post.user?.name}</div></div>
+                <div className="post__description">Description: {post.description}</div></center>
                 <div className="post__title">Edit your title
-                    <input  id="title"  onChange={
+                    <input  id="title"  value={post.title}onChange={
                             (evt) => {
                                 //creates a copy of post state
                                 const copy = { ...post }
@@ -69,7 +69,7 @@ export const Post = () => {
                         className="form-control" >
                     </input>
                 <div className="post__url">Edit your image/gif url
-                    <input  id="edit__url"  onChange={
+                    <input  id="edit__url" value={post.imageUrl} onChange={
                             (evt) => {
                                 const copy = { ...post }
                                 copy.imageUrl = evt.target.value
@@ -80,7 +80,7 @@ export const Post = () => {
                         className="form-control" >
                     </input>
                 <div className="post__description">Edit your description
-                    <input  id="edit__description"  onChange={
+                    <input  id="edit__description" value={post.description} onChange={
                             (evt) => {
                                 const copy = { ...post }
                                 copy.description = evt.target.value
@@ -91,7 +91,7 @@ export const Post = () => {
                         className="form-control" >
                     </input>
                 <div className="post__date">Update your new post's submission date 
-                    <input  id="edit__date"  onChange={
+                    <input  id="edit__date" value={post.timestamp} onChange={
                             (evt) => {
                                 const copy = { ...post }
                                 copy.timestamp = evt.target.value
