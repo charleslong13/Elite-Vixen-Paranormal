@@ -39,17 +39,17 @@ export const RequestList = () => {
                 requests.map(           // map() creates a new array populated with the results of calling a provided function on every element in the requests array
                     (request) => {
                         //setting the key to the request object Id to return the correct, individual request object 
-                        return <p key={`request--${request.id}`}> 
-                        <p>{request.name} submitted an investigation request for {request.requestedDate}</p>
-                        <p>Description: {request.description}</p>
-                        <p>Requested Investigation Address: {request.address}</p>
-                        <p>Property Owner: {JSON.stringify(request.propertyOwner)}</p>
-                        <p>Contact number: {request.number}</p>
+                        return <div key={`request--${request.id}`}> 
+                        <div>{request.name} submitted an investigation request for {request.requestedDate}</div>
+                        <div>Description: {request.description}</div>
+                        <div>Requested Investigation Address: {request.address}</div>
+                        <div>Property Owner: {JSON.stringify(request.propertyOwner)}</div>
+                        <div>Contact number: {request.number}</div>
                         
                         
                     <button onClick={() => deleteRequest(request.id)}>Delete</button>
             
-                         </p>
+                         </div>
                     }
                 )
             }

@@ -22,7 +22,7 @@ export const PostList = () => {
             .then(() => {
                 fetch(`http://localhost:8088/posts?_expand=user`) //after its deleted it fetches all of our remaining posts
 
-                    .then(res => res.json()) //converts the response to json 
+                    .then(res => res.json()) //converts the response (json encoded string) to javascript 
                     .then((data) => {
                         updatePosts(data) //takes the response and calls our setter function to set the remaining posts' state 
                     })
@@ -44,7 +44,7 @@ export const PostList = () => {
                     (completedPost) => {
 
                         return <center><div className="postList"><div key={`post--${completedPost.id}`}>
-                            <img className="postImage" src={completedPost.imageUrl} /><p>
+                            <img className="postImage" src={completedPost.imageUrl} alt="" /><p>
                             </p><div className="postData">
                                 {completedPost.user?.id === parseInt(localStorage.getItem("evp_user")) //using a ternary so that the title will be displayed as a link only if the post was submitted by the current user, if the post was made by someone else it just displays as a string
                                     ?
