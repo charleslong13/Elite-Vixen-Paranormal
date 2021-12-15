@@ -4,3 +4,14 @@
     padding: 2px 16px;
     width: 75%;
 }
+
+.deleteButton {
+    background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}

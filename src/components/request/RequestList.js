@@ -47,7 +47,7 @@ export const RequestList = () => {
                         <div>Contact number: {request.number}</div>
                         
                         
-                    <button onClick={() => deleteRequest(request.id)}>Delete</button>
+                    <button className="deleteButton" onClick={() => deleteRequest(request.id)}>Delete</button>
             
                          </div>
                     }
