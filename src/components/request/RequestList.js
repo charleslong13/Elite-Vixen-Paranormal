@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-
+import "./Request.css"
 
 export const RequestList = () => {
     const [requests, setRequests] = useState([]) // State variable for current request object
@@ -39,7 +39,7 @@ export const RequestList = () => {
                 requests.map(           // map() creates a new array populated with the results of calling a provided function on every element in the requests array
                     (request) => {
                         //setting the key to the request object Id to return the correct, individual request object 
-                        return <div key={`request--${request.id}`}> 
+                        return <div className="requestList" key={`request--${request.id}`}> 
                         <div>{request.name} submitted an investigation request for {request.requestedDate}</div>
                         <div>Description: {request.description}</div>
                         <div>Requested Investigation Address: {request.address}</div>
