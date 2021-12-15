@@ -3,6 +3,11 @@
     transition: 0.3s;
     padding: 2px 16px;
     width: 75%;
+    display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: black;
+  
 }
 
 .deleteButton {
@@ -15,3 +20,6 @@
   display: inline-block;
   font-size: 12px;
 }
+
+
+  
