@@ -14,6 +14,14 @@ ERD: https://dbdiagram.io/d/61ae2b038c901501c0e2f461
 
 ![image](https://user-images.githubusercontent.com/91440740/146600541-66acf8dc-1ffa-4bc2-bba5-93b2741bd9da.png)
 
+![image](https://user-images.githubusercontent.com/91440740/146600993-b746efb7-0365-4250-82b8-eda59ae69f88.png)
+
+![image](https://user-images.githubusercontent.com/91440740/146601023-4b968d3a-665c-48da-8e2c-d6467ccc35d4.png)
+
+![image](https://user-images.githubusercontent.com/91440740/146601047-b07439b3-90d7-4287-bceb-bac29244e229.png)
+
+![image](https://user-images.githubusercontent.com/91440740/146601073-eeee19b2-4e7c-4ee3-969d-88123c68972f.png)
+
 
 # Getting Started with Create React App
 
