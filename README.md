@@ -6,9 +6,11 @@ OVERVIEW
 
 The purpose of this application is to create an online space where people can connect through their paranormal experiences, submit an investigation request form to acquire ghost hunting services, and find general and contact information for  Elite Vixen Paranormal. Users will be able to register and log in to their account, create new posts, delete their own posts,  edit their posts, and submit investigation request forms. Employees will be able  to view and delete the investigation request forms. 
 
-Contributors: Charlie Long
-
+Contributors: Charlie
+Wireframe: https://marvelapp.com/prototype/hc0h25e/screen/83929374
 ERD: https://dbdiagram.io/d/61ae2b038c901501c0e2f461
+![image](https://user-images.githubusercontent.com/91440740/146600541-66acf8dc-1ffa-4bc2-bba5-93b2741bd9da.png)
+
 
 # Getting Started with Create React App
 
