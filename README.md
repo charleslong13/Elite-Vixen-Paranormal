@@ -8,7 +8,9 @@ The purpose of this application is to create an online space where people can co
 
 Contributors: Charlie
 Wireframe: https://marvelapp.com/prototype/hc0h25e/screen/83929374
+
 ERD: https://dbdiagram.io/d/61ae2b038c901501c0e2f461
+
 ![image](https://user-images.githubusercontent.com/91440740/146600541-66acf8dc-1ffa-4bc2-bba5-93b2741bd9da.png)
 
 
